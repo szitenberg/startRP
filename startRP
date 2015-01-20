@@ -11,9 +11,12 @@ fi
 echo " -------ReproPhylo------- "
 echo "   THINGS TO NOTE"
 echo " -------------------------"
-echo "1. If this is the first startup it can take several minutes to download the ReproPhylo Docker image"
-echo "2. The container uses locahost port 8888. If you are running a local process currently using this port, ReproPhylo will not work"
-echo "3. The browser may ask you to manually allow access to the container (it will give instructions)"
+echo "1. If this is the first startup it can take several minutes to download"
+echo "   the ReproPhylo Docker image"
+echo "2. The container uses locahost port 8888. If you are running a local process"
+echo "   currently using this port, ReproPhylo will not work"
+echo "3. The browser may ask you to manually allow access to the container"
+echo "   (it will give instructions)"
 echo " -------------------------"
 echo "sleeping for 6 secs"
 sleep 6
@@ -33,7 +36,7 @@ xhost +local:root
 echo
 #
 echo "starting reprophylo container"
-#sudo docker run --name rpnotebook -d -p 8888:8888 -e "PASSWORD=password" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $1:/notebooks -e DISPLAY=$DISPLAY szitenberg/reprophylo
+sudo docker run --name rpnotebook -d -p 8888:8888 -e "PASSWORD=password" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $1:/notebooks -e DISPLAY=$DISPLAY szitenberg/reprophylo
 echo
 #
 echo "starting default browser"
@@ -44,7 +47,7 @@ echo "starting default browser"
 # The browser may ask you to manually allow access to the container
 # (it will give instructions)
 echo
-#xdg-open https://localhost:8888
+xdg-open https://localhost:8888
 if [ -d $1/Tutorial_files ]; then
     echo "Tutorial_files exists in $1"
     echo
