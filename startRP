@@ -47,6 +47,7 @@ echo "starting default browser"
 # The browser may ask you to manually allow access to the container
 # (it will give instructions)
 echo
+sleep 3
 xdg-open https://localhost:8888
 if [ -d $1/Tutorial_files ]; then
     echo "Tutorial_files exists in $1"
