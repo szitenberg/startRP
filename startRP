@@ -13,7 +13,7 @@ echo "   THINGS TO NOTE"
 echo " -------------------------"
 echo "1. If this is the first startup it can take several minutes to download"
 echo "   the ReproPhylo Docker image"
-echo "2. The container uses locahost port 8888. If you are running a local process"
+echo "2. The container uses localhost port 8888. If you are running a local process"
 echo "   currently using this port, ReproPhylo will not work"
 echo "3. The browser may ask you to manually allow access to the container"
 echo "   (it will give instructions)"
@@ -36,11 +36,11 @@ xhost +local:root
 echo
 #
 echo "starting reprophylo container"
-sudo docker run --name rpnotebook -d -p 8888:8888 -e "PASSWORD=password" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $1:/notebooks -e DISPLAY=$DISPLAY szitenberg/reprophylo
+sudo docker run --name rpnotebook -d -p 8888:8888 -e "PASSWORD=password" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $1:/notebooks -e DISPLAY=$DISPLAY szitenberg/reprophylo /notebook.sh
 echo
 #
 echo "starting default browser"
-# The container uses locahost port 8888. 
+# The container uses localhost port 8888. 
 # If you are running a local process currently using this port, 
 # ReproPhylo will not work.
 #
@@ -56,7 +56,7 @@ elif [ $2 = "--xt" ]; then
     echo "Tutorial files opt out"
     echo
 elif [ $# -eq 2 ] && [ $2 != "--xt" ] || [ $# -eq 1 ]; then
-    echo "Puting tutorial files in $1"
+    echo "Putting tutorial files in $1"
     wget -c  https://github.com/HullUni-bioinformatics/ReproPhylo/archive/master.zip
     unzip -qq master.zip
     cd ReproPhylo-master
@@ -67,6 +67,6 @@ elif [ $# -eq 2 ] && [ $2 != "--xt" ] || [ $# -eq 1 ]; then
     echo "Tutorial files are in $1"
     echo
 fi
-echo "IPython notebook loggin page is runnig in localhost:8888"
+echo "IPython notebook login page is runnig in localhost:8888"
     
 
