@@ -36,7 +36,7 @@ xhost +local:root
 echo
 #
 echo "starting reprophylo container"
-sudo docker run --name rpnotebook -d -p 8888:8888 -e "PASSWORD=password" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $1:/notebooks -e DISPLAY=$DISPLAY szitenberg/reprophylo /notebook.sh
+sudo docker run --net=host --name rpnotebook -d -p 8888:8888 -e "PASSWORD=password" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $1:/notebooks -e DISPLAY=$DISPLAY szitenberg/reprophylo /notebook.sh
 echo
 #
 echo "starting default browser"
