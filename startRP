@@ -35,20 +35,6 @@ echo "allowing access to x server with xhost +local:root"
 xhost +local:root
 echo
 #
-echo "starting reprophylo container"
-sudo docker run --net=host --name rpnotebook -d -p 8888:8888 -e "PASSWORD=password" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $1:/notebooks -e DISPLAY=$DISPLAY szitenberg/reprophylo /notebook.sh
-echo
-#
-echo "starting default browser"
-# The container uses localhost port 8888. 
-# If you are running a local process currently using this port, 
-# ReproPhylo will not work.
-#
-# The browser may ask you to manually allow access to the container
-# (it will give instructions)
-echo
-sleep 3
-xdg-open https://localhost:8888
 if [ -d $1/Tutorial_files ]; then
     echo "Tutorial_files exists in $1"
     echo
@@ -67,6 +53,21 @@ elif [ $# -eq 2 ] && [ $2 != "--xt" ] || [ $# -eq 1 ]; then
     echo "Tutorial files are in $1"
     echo
 fi
-echo "IPython notebook login page is runnig in localhost:8888"
+#
+echo "starting reprophylo container"
+sudo docker run --net=host --name rpnotebook -d -p 8888:8888 -e "PASSWORD=password" -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $1:/notebooks -e DISPLAY=$DISPLAY szitenberg/reprophylo /notebook.sh
+echo
+#
+echo "starting default browser"
+# The container uses localhost port 8888. 
+# If you are running a local process currently using this port, 
+# ReproPhylo will not work.
+#
+# The browser may ask you to manually allow access to the container
+# (it will give instructions)
+echo
+sleep 3
+xdg-open https://localhost:8888
+echo "Jupiter login page is running in localhost:8888"
     
 
