@@ -68,6 +68,6 @@ echo "starting default browser"
 echo
 sleep 3
 xdg-open https://localhost:8888
-echo "Jupiter login page is running in localhost:8888"
+echo "Jupyter login page is running in localhost:8888"
     
 
